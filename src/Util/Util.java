@@ -4,13 +4,29 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Util {
+	
 	public static String getCurrentDate() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yy.MM.dd HH:mm:ss");
-		Date cal = new Date();
-		String cal1 = sdf.format(cal);
-		System.out.println(cal1);
-		return cal1;
-
+		SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd HH:mm:ss");
+		Date time = new Date();
+		String time1 = format1.format(time);
+		return time1;
 	}
-
+	
+	public static Long getDateStringToNumber(String date) {
+		
+		String str = "";
+		
+		String[] date_bits = date.split(" ");
+		String[] bits1 = date_bits[0].split("-");
+		String[] bits2 = date_bits[1].split(":");
+		
+		for(int i = 0; i < bits1.length; i++) {
+			str += bits1[i];
+		}
+		for(int i = 0; i < bits2.length; i++) {
+			str += bits2[i];
+		}
+		
+		return Long.parseLong(str);
+	}
 }
